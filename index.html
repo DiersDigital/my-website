@@ -1,17 +1,193 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Welcome to My Website</title>
-  <style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Diers Digital — Business Website</title>
+<style>
+  /* Reset and base styles */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    background: #f5f7fa;
+    color: #333;
+  }
+
+  /* Sidebar */
+  nav {
+    width: 280px;
+    background: #34495e;
+    color: white;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+  nav h2 {
+    margin: 0 0 2rem;
+    font-weight: 700;
+    font-size: 1.8rem;
+    border-bottom: 1px solid #4b6584;
+    padding-bottom: 0.5rem;
+  }
+  nav a {
+    color: #d1d8e0;
+    text-decoration: none;
+    margin-bottom: 1rem;
+    padding: 0.5rem 0.3rem;
+    border-radius: 4px;
+    transition: background 0.3s;
+  }
+  nav a:hover, nav a.active {
+    background: #3c5874;
+    color: #f1f2f6;
+  }
+
+  /* Main content */
+  main {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 2.5rem 3rem;
+    background: white;
+  }
+  main h1 {
+    margin-top: 0;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #2f3640;
+  }
+  section {
+    margin-bottom: 3rem;
+  }
+  section h2 {
+    border-bottom: 2px solid #718093;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    color: #273c75;
+  }
+  p {
+    line-height: 1.6;
+  }
+  ul {
+    margin-top: 0.5rem;
+    padding-left: 1.25rem;
+  }
+  a.external-link {
+    color: #0984e3;
+    text-decoration: underline;
+  }
+
+  /* Responsive */
+  @media (max-width: 720px) {
     body {
-      font-family: sans-serif;
-      text-align: center;
-      margin-top: 100px;
+      flex-direction: column;
+      height: auto;
     }
-  </style>
+    nav {
+      width: 100%;
+      flex-direction: row;
+      overflow-x: auto;
+      padding: 1rem 1rem;
+    }
+    nav h2 {
+      display: none;
+    }
+    nav a {
+      margin: 0 1rem 0 0;
+      white-space: nowrap;
+    }
+    main {
+      padding: 1.5rem;
+    }
+  }
+</style>
 </head>
 <body>
-  <h1>Hello from my Porkbun domain!</h1>
-  <p>This is my first live website using GitHub Pages!</p>
+
+<nav>
+  <h2>Diers Digital</h2>
+  <a href="#business-overview" class="active">Business Overview</a>
+  <a href="#products-services">Products & Services</a>
+  <a href="#contact">Contact</a>
+  <a href="#refund-policy">Refund Policy</a>
+  <a href="#privacy-policy">Privacy Policy</a>
+  <a href="#terms-of-service">Terms of Service</a>
+</nav>
+
+<main>
+  <section id="business-overview">
+    <h1>Welcome to Diers Digital</h1>
+    <p><strong>Who we are:</strong> Diers Digital is a creative technology business specializing in web development, digital marketing, and software consulting. We help businesses build modern, responsive websites and innovative digital products.</p>
+  </section>
+
+  <section id="products-services">
+    <h2>Products & Services</h2>
+    <p>We offer the following services:</p>
+    <ul>
+      <li>Custom website design and development</li>
+      <li>E-commerce store setup and management</li>
+      <li>SEO and online marketing strategies</li>
+      <li>Software consulting and integrations</li>
+    </ul>
+    <p>Additionally, we sell digital products such as website templates and plugins through our online store.</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>You can reach us via:</p>
+    <ul>
+      <li>Email: <a href="mailto:support@diersdigital.com">support@diersdigital.com</a></li>
+      <li>Phone: (555) 123-4567</li>
+      <li>Address: 123 Digital Lane, Tech City, TX 75001</li>
+    </ul>
+  </section>
+
+  <section id="refund-policy">
+    <h2>Refund Policy</h2>
+    <p>We strive to provide excellent products and services. If you are unsatisfied with a purchase, please contact us within 14 days for a possible refund or exchange. Digital products are non-refundable once downloaded.</p>
+  </section>
+
+  <section id="privacy-policy">
+    <h2>Privacy Policy</h2>
+    <p>We respect your privacy. Any personal information collected is used solely to provide and improve our services. We do not share your data with third parties except as required by law.</p>
+    <p>For full details, please review our detailed privacy policy <a href="privacy.html" class="external-link" target="_blank" rel="noopener">here</a>.</p>
+  </section>
+
+  <section id="terms-of-service">
+    <h2>Terms of Service</h2>
+    <p>By using our website and services, you agree to comply with our terms of service. These terms cover usage, intellectual property rights, disclaimers, and liabilities.</p>
+    <p>For the complete terms, please visit <a href="terms.html" class="external-link" target="_blank" rel="noopener">this page</a>.</p>
+  </section>
+</main>
+
+<script>
+  // Highlight active nav link on scroll
+  const sections = document.querySelectorAll("main section");
+  const navLinks = document.querySelectorAll("nav a");
+
+  window.addEventListener("scroll", () => {
+    let current = "";
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 100;
+      if (pageYOffset >= sectionTop) {
+        current = section.getAttribute("id");
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove("active");
+      if (link.getAttribute("href") === "#" + current) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
